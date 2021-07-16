@@ -1,0 +1,26 @@
+.square-normal {
+  padding: 50px;
+  margin: 1%;
+  border-radius: 30px;
+  border: 1px solid white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.square-normal:after {
+  margin: 1%;
+  content: "";
+}
+
+.square-clicked {
+  padding: 50px;
+  margin: 1%;
+  border-radius: 30px;
+  border: 1px solid white;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+  background-color: #d4e157;
+}
+
+.square-clicked:after {
+  margin: 1%;
+  content: "";
+}

@@ -8,9 +8,41 @@
 }
 
 .premios {
-  white-space: pre-wrap;
   display: flex;
-  padding: 10px 0;
+  flex-direction: column;
+  align-content: flex-end;
+  align-items: stretch;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  border: 1px solid white;
+  border-radius: 15px;
+  padding: 0 15px;
+  box-shadow: 0px 2px 5px rgb(0 0 0 / 30%);
+  background-color: #f5f5f5;
+  width: 20%;
+}
+.premio {
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px white;
+  border-style: double;
+  background-color: #d4e157;
+  box-shadow: 0px 2px 5px rgb(0 0 0 / 30%);
+}
+
+.premio-and-image {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.premio-temp {
+  width: 50%;
+}
+
+.premio-img {
+  width: 50%;
 }
 
 .board-row {

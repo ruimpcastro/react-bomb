@@ -200,7 +200,7 @@ class Board extends Component {
         premiosDescobertos: premiosDescobertos,
         totalPremios: totalPremios,
         imageList: [...imageList, Finished],
-        bomba: bomba,
+        bomba: true,
       });
     } else {
       // ACERTOU

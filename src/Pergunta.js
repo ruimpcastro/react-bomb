@@ -15,9 +15,9 @@ class Pergunta extends React.Component{
         return(
             <div className="pergunta-normal">
                 {/*<div className="pergunta-invisible">*/}
-                <h1>Este grupo merece um 20 pela noitada?</h1>
-                <button className="buttons" onClick={() => this.handleClick("sim")}>Sim</button>
-                <button className="buttons" onClick={() => this.handleClick("nao")}>Não</button>
+                <h2>Quem descobriu o aquecimento global?</h2>
+                <button className="buttons" onClick={() => this.handleClick("Guy Stewart Callendar")}>Guy Stewart Callendar</button>
+                <button className="buttons" onClick={() => this.handleClick("Kurt Gödel")}>Kurt Gödel</button>
             </div>
         )
     }

@@ -19,6 +19,8 @@ import Bicicleta from "./assets/bicicleta.jpeg";
 import Hotel from "./assets/hotel.jpeg";
 import Notas from "./assets/notas.jpeg";
 import Bomba from "./assets/bomba.gif";
+import Jackpot from "./assets/jackpot.jpeg";
+import Finished from "./assets/finished.jpeg";
 
 function shuffle() {
   let array = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -115,7 +117,7 @@ function inserirEspeciais() {
     indexJackpot = Math.floor(Math.random() * 8);
     indexBomba = Math.floor(Math.random() * 8);
   }
-  premiosSelecionados[indexJackpot] = ["JACKPOT", jackpot];
+  premiosSelecionados[indexJackpot] = ["JACKPOT", jackpot, Notas];
   premiosSelecionados[indexBomba] = ["Bomba", 0, Bomba];
 }
 
@@ -152,7 +154,7 @@ class Board extends Component {
       if (nomePremio === "Bomba") {
         this.setState({
           premiosDescobertos: [
-            "Acertou na bomba! Perdeu todos os seus prémios!",
+            "Acertou na bomba! Perdeu todos os seus prémios! 😭",
           ],
           valorPremio: custoPremio,
           totalPremios: 0,
@@ -187,24 +189,29 @@ class Board extends Component {
   handleQuestionClick(resposta, parent) {
     let premiosDescobertos = parent.state.premiosDescobertos;
     let totalPremios = parent.state.totalPremios;
+    let imageList = parent.state.imageList;
     let bomba = parent.state.bomba;
-    if (resposta === "nao") {
+    if (resposta === "Kurt Gödel") {
       // ERROU
-      premiosDescobertos.push("JACKPOT: RESPOSTA FALHADA");
+      premiosDescobertos.push(
+        "Falhou a pergunta terminando o jogo com os prémios que já ganhou"
+      );
       parent.setState({
         premiosDescobertos: premiosDescobertos,
         totalPremios: totalPremios,
+        imageList: [...imageList, Finished],
         bomba: bomba,
       });
     } else {
       // ACERTOU
-      premiosDescobertos.push("JACKPOT: RESPOSTA ACERTADA");
-      totalPremios += jackpot;
       parent.setState({
         premiosDescobertos: premiosDescobertos,
+        imageList: [...imageList, Jackpot],
         totalPremios: totalPremios,
         bomba: bomba,
       });
+      premiosDescobertos.push("Acertou no Jackpot!");
+      totalPremios += jackpot;
     }
     parent.makePerguntaInvisible();
   }

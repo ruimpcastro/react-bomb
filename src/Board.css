@@ -7,6 +7,10 @@
   height: 100vh;
 }
 
+#perguntaDiv {
+  visibility: hidden;
+}
+
 .premios {
   display: flex;
   flex-direction: column;

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Square from "./Square";
+import Pergunta from "./Pergunta";
 import "./Board.css";
 
 import Iphone from "./assets/iphone-12.jpeg";
@@ -41,26 +43,26 @@ function shuffle() {
 
 function resetPremios() {
   premios = [
-    ["Telemóvel", 800, Iphone],
-    ["Viagem aos Açores para 2 pessoas", 1000, Viagem],
-    ["Viagem à Madeira para 2 pessoas", 1000, Viagem],
-    ["Máquina de lavar roupa", 600, Roupa],
-    ["Máquina de lavar loiça", 800, Louca],
-    ["Micro-ondas", 100, Microondas],
-    ["Frigorífico", 850, Frigorifico],
-    ["Máquina de café", 100, Cafe],
-    ["Computador", 950, iMac],
-    ["Tablet", 250, Tablet],
-    ["Cruzeiro à ilhas gregas para 2 pessoas", 2000, Cruzeiro],
-    ["Colar de Romeu Bettencourt", 1000, Colar],
-    ["Viagem à Turquia para 2 pessoas", 750, Viagem],
-    ["Bicicleta de Manutenção", 300, Bicicleta],
-    ["Fim de semana para 2 pessoas no Hotel Buçaco", 1000, Hotel],
-    ["Prémio Monetário (100€)", 100, Notas],
-    ["Prémio Monetário (200€)", 200, Notas],
-    ["Prémio Monetário (300€)", 300, Notas],
-    ["Prémio Monetário (400€)", 400, Notas],
-    ["Prémio Monetário (500€)", 500, Notas],
+    ["Telemóvel - 800€", 800, Iphone],
+    ["Viagem aos Açores para 2 pessoas - 1000€", 1000, Viagem],
+    ["Viagem à Madeira para 2 pessoas - 1000€", 1000, Viagem],
+    ["Máquina de lavar roupa - 600€", 600, Roupa],
+    ["Máquina de lavar loiça - 800€", 800, Louca],
+    ["Micro-ondas - 100€", 100, Microondas],
+    ["Frigorífico - 850€", 850, Frigorifico],
+    ["Máquina de café - 100€", 100, Cafe],
+    ["Computador - 950€", 950, iMac],
+    ["Tablet - 250€", 250, Tablet],
+    ["Cruzeiro à ilhas gregas para 2 pessoas - 2000€", 2000, Cruzeiro],
+    ["Colar de Romeu Bettencourt - 1000€", 1000, Colar],
+    ["Viagem à Turquia para 2 pessoas - 750€", 750, Viagem],
+    ["Bicicleta de Manutenção - 300€", 300, Bicicleta],
+    ["Fim de semana para 2 pessoas no Hotel Buçaco - 1000€", 1000, Hotel],
+    ["Prémio Monetário - 100€", 100, Notas],
+    ["Prémio Monetário - 200€", 200, Notas],
+    ["Prémio Monetário - 300€", 300, Notas],
+    ["Prémio Monetário - 400€", 400, Notas],
+    ["Prémio Monetário - 500€", 500, Notas],
   ];
 }
 
@@ -149,13 +151,14 @@ class Board extends Component {
       let imagePremio = premiosSelecionados[i - 1][2];
       if (nomePremio === "Bomba") {
         this.setState({
-          premiosDescobertos: ["ACERTOU NA BOMBA! PERDEU OS SEUS PRÉMIOS!"],
+          premiosDescobertos: [
+            "Acertou na bomba! Perdeu todos os seus prémios!",
+          ],
           valorPremio: custoPremio,
           totalPremios: 0,
           bomba: true,
           imageList: [Bomba],
         });
-        return <button>OH SNAP</button>;
       } else if (
         !this.state.premiosDescobertos.includes(nomePremio) &&
         nomePremio !== "JACKPOT"
@@ -174,6 +177,9 @@ class Board extends Component {
         console.log("Prémios descobertos: ", this.state.premiosDescobertos);
         console.log("Sum prémios: ", this.state.totalPremios);
         console.log("Imagem de prémios: ", this.state.imageList);
+      }
+      if (nomePremio === "JACKPOT") {
+        this.makePerguntaVisible();
       }
     }
   }
@@ -200,6 +206,27 @@ class Board extends Component {
         bomba: bomba,
       });
     }
+    parent.makePerguntaInvisible();
+  }
+
+  makePerguntaVisible() {
+    let divElement = document.getElementById("perguntaDiv");
+    divElement.style.visibility = "visible";
+  }
+
+  makePerguntaInvisible() {
+    let divElement = document.getElementById("perguntaDiv");
+    divElement.style.visibility = "hidden";
+  }
+
+  renderPergunta() {
+    return (
+      <Pergunta
+        parentCallback={this.handleQuestionClick}
+        parent={this}
+        invisible={true}
+      />
+    );
   }
 
   renderSquare(i) {
@@ -237,6 +264,7 @@ class Board extends Component {
 
     return (
       <div className="table">
+        <div id="perguntaDiv">{this.renderPergunta()}</div>
         <div className="status">
           <h1>{status}</h1>
         </div>
@@ -262,10 +290,23 @@ class Board extends Component {
           <h3>Prémio: {this.state.totalPremios}</h3>
         </div>
         <div className="premios">
-          <p>Prémios</p>
+          <h3>Prémios</h3>
           {this.listText()}
         </div>
         <div className="premio-temp">{this.listToHTML()}</div>
+        <div className="left-buttons">
+          <Link to="./">
+            <button className="button-rules">Regras</button>
+          </Link>
+          <button
+            className="button-restart"
+            onClick={() => {
+              window.location.href = "./game";
+            }}
+          >
+            Recomeçar jogo
+          </button>
+        </div>
       </div>
     );
   }

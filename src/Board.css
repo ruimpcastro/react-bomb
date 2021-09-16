@@ -5,6 +5,7 @@
   justify-content: flex-start;
   align-content: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 #perguntaDiv {
@@ -47,7 +48,7 @@
 }
 
 .premio-img {
-  width: 50%;
+  width: 45%;
 }
 
 .board-row {

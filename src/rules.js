@@ -6,58 +6,45 @@ import "./rules.css";
 const Rules = () => (
   <div id="regras">
     <div id="regras-center">
-      <h1>Regras do Jogo da Bomba</h1>
+      <h1>A Bomba</h1>
+      <h3>Regras do jogo</h3>
       <p>
-        O jogo irá apresentar-se como uma tabela 3 para 3 onde terão números
-        aleatórios, de 1 a 9, onde:
+        O jogo é constituido por nove casas. Oito dessas casas têm prémios e uma
+        delas tem a bomba.
       </p>
       <p>
-        7 casas terão entre prémios monetários a prémios físicos ( ex:
-        Telemóvel, computador, etc). Estes prémios iram ser distribuídos
-        aleatoriamente pela tabela, garantindo que o custo total não ultrapassa
-        os 10000€.
+        O objetivo do jogo é não acertar na bomba e quando quiser pode desistir
+        do jogo recebendo os prémios no momento em que desiste. O total dos
+        prémios pode chegar até 10.000€ em valor!
       </p>
       <p>
-        1 casa terá um jackpot (Valor aleatório entre 2000€ e 4000€ + custo do
-        prémio mais caro em jogo), no qual o jogado, para o ganhar, terá que
-        responder corretamente a uma pergunta, no tempo máximo de 1 minuto. Se
-        acertar, ganha o jackpot e todos os outros prémios que já ganhou. Se
-        errar, ganha os prémios que ganhou anteriormente.
+        Uma das casas constitui o Jackpot que dá um grande valor no prémio mas
+        para ganhar o Jackpot terá de responder a uma pergunta de cultura geral.
       </p>
       <p>
-        1 casa terá uma bomba, no qual o jogador, perde tudo o que eventualmente
-        tenha ganho.
+        Caso acerte na bomba perde todos os seus prémios! Pronto para jogar?
       </p>
       <p className="negrito">
         O objetivo do jogo é ganhar o número máximo de prémios + jackpot, sem
         acertar na bomba.
       </p>
-
-      <h1>Prémios disponíveis</h1>
-      <ul>
-        <li>Prémios monetários: 100€, 200€, 300€, 400€, 500€;</li>
-        <li>Outros prémios:</li>
-        <li>Telemóvel 800€;</li>
-        <li>Viagem aos Açores para 2 pessoas 1000€;</li>
-        <li>Viagem à Madeira para 2 pessoas 1000€;</li>
-        <li>Máquina de lavar roupa 600€;</li>
-        <li>Máquina de lavar loiça 800€;</li>
-        <li>Micro-ondas 100€;</li>
-        <li>Frigorífico 850€;</li>
-        <li>Máquina de café 100€;</li>
-        <li>Computador 950€;</li>
-        <li>Tablet 250€;</li>
-        <li>Cruzeiro às ilhas gregas p/ 2 pessoas 2000€;</li>
-        <li>Colar de Romeu Bettencourt 1000€;</li>
-        <li>Viagem à Turquia p/ 2 pessoas 750€;</li>
-        <li>Bicicleta de manutenção 300€;</li>
-        <li>Viagem à Turquia p/ 2 pessoas 750€;</li>
-        <li>Fim de semana p/ 2 pessoas no Hotel Buçaco 1000€.</li>
-      </ul>
     </div>
-    <Link to="./game" style={{ textDecoration: "none" }}>
-      <button className="button-rules">Jogar</button>
-    </Link>
+    <div className="play">
+      <Link
+        to="./game"
+        style={{
+          width: "100%",
+          textDecoration: "none",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <button className="button-play">
+          <h3>Jogar</h3>
+        </button>
+      </Link>
+    </div>
   </div>
 );
 

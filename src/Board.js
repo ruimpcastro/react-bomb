@@ -267,7 +267,7 @@ class Board extends Component {
   }
 
   render() {
-    const status = "The bomb";
+    const status = "A Bomba";
 
     return (
       <div className="table">
@@ -294,7 +294,7 @@ class Board extends Component {
           {this.renderSquare(array[8])}
         </div>
         <div>
-          <h3>Prémio: {this.state.totalPremios}</h3>
+          <h3 style={{marginBottom: "0"}}>Prémio: {this.state.totalPremios}€</h3>
         </div>
         <div className="premios">
           <h3>Prémios</h3>
